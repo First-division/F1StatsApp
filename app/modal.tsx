@@ -1,17 +1,25 @@
 import { StatusBar } from 'expo-status-bar';
 import { Platform, StyleSheet } from 'react-native';
 
-import EditScreenInfo from '@/components/EditScreenInfo';
+import { ExternalLink } from '@/components/ExternalLink';
 import { Text, View } from '@/components/Themed';
 
 export default function ModalScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Modal</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/modal.tsx" />
+      <Text style={styles.title}>Expo Go + router setup</Text>
+      <Text style={styles.body}>
+        This project uses React Native, Expo, and Expo Router v6 with the tab template structure,
+        so it runs in Expo Go without any native setup.
+      </Text>
+      <Text style={styles.body}>
+        Start the dev server with <Text style={styles.code}>npm start</Text> and scan the QR code
+        from Expo Go to open the app.
+      </Text>
+      <ExternalLink href="https://github.com/First-division/F1StatsApp" style={styles.link}>
+        <Text style={styles.linkText}>Repository reference</Text>
+      </ExternalLink>
 
-      {/* Use a light status bar on iOS to account for the black space above the modal */}
       <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
     </View>
   );
@@ -20,16 +28,27 @@ export default function ModalScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
+    padding: 24,
     justifyContent: 'center',
+    gap: 16,
   },
   title: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    fontSize: 28,
+    fontWeight: '800',
   },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+  body: {
+    fontSize: 16,
+    lineHeight: 24,
+  },
+  code: {
+    fontWeight: '800',
+  },
+  link: {
+    marginTop: 8,
+  },
+  linkText: {
+    color: '#e10600',
+    fontSize: 16,
+    fontWeight: '700',
   },
 });
